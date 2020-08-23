@@ -56,7 +56,7 @@ function updateTrail(planet) {
 }
 
 function getGForce(planet1, planet2) {
-	var G = 0.005;
+	var G = 0.02;
 	var m1 = planet1.mass;
 	var m2 = planet2.mass;
 	var r = getDistance(planet1, planet2);
@@ -69,8 +69,8 @@ function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     main(planets);
     planets.forEach((function (planet) {
-        drawPlanet(planet.x, planet.y, radius, 5, planet.colour, planet.colour);
         drawTrail(planet.trail);
+        drawPlanet(planet.x, planet.y, radius, 5, planet.colour, planet.colour);
     }));
     requestAnimationFrame(draw);
     }
@@ -78,42 +78,44 @@ function draw() {
     function setup() {
         //Adding planets
         planets.push({
-            x: canvas.width / 3,
+            x: canvas.width * 4/10,
             y: canvas.height / 2,
-            colour: '#FF0000',
-            direction: -Math.PI / 4,
-            velocity: 1,
+            colour: '#FFFF00',
+            direction: -Math.PI/2,
+            velocity: 2,
             id: 0,
             mass: 1000000,
             trail: []
         });
         planets.push({
-            x: (canvas.width / 5) * 4,
-            y: canvas.height/2,
-            colour: '#0000FF',
-            direction: Math.PI*3/4,
-            velocity: 1,
+            x: canvas.width * 6/10,
+            y: canvas.height / 2,
+            colour: '#00FFFF',
+            direction: Math.PI/2,
+            velocity: 2,
             id: 1,
             mass: 1000000,
             trail: []
         });
         // planets.push({
-        //     x: canvas.width/2,
-        //     y: canvas.height / 3,
-        //     colour: '#00FF00',
-        //     direction: Math.PI,
+        //     x: canvas.width * 7/10,
+        //     y: canvas.height / 2,
+        //     colour: '#0000FF',
+        //     direction: Math.PI/2,
         //     velocity: 2,
         //     id: 2,
-        //     mass: 1000000
+        //     mass: 1000000,
+        //     trail: []
         // });
         // planets.push({
         //     x: canvas.width/4,
         //     y: canvas.height*4/5,
         //     colour: '#FFFFFF',
-        //     direction: -Math.PI/4,
+        //     direction: -Math.PI/2,
         //     velocity: 2,
         //     id: 3,
-        //     mass: 1000000
+        //     mass: 1000000,
+        //     trail: []
         // });
         draw()
     }
